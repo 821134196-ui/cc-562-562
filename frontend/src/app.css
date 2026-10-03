@@ -1,0 +1,169 @@
+:root {
+  --bg: #f4f5f7;
+  --panel: #ffffff;
+  --ink: #1f2933;
+  --muted: #7b8794;
+  --line: #e4e7eb;
+  --brand: #0b7285;
+  --brand-dark: #095c6b;
+  --ok: #2b8a3e;
+  --warn: #b7791f;
+  --danger: #c92a2a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+header h1 { font-size: 18px; margin: 0; }
+.header-right { display: flex; gap: 12px; align-items: center; }
+.header-right input { width: 90px; }
+
+main {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 16px;
+  padding: 16px 20px;
+  align-items: start;
+}
+
+h2 { font-size: 15px; margin: 0 0 8px; }
+h3 { font-size: 14px; margin: 0 0 8px; }
+h4 { font-size: 13px; margin: 8px 0 4px; }
+.muted { color: var(--muted); font-size: 12px; }
+
+button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+button:hover:not(:disabled) { border-color: var(--brand); color: var(--brand); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+button.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+button.primary:hover:not(:disabled) { background: var(--brand-dark); color: #fff; }
+button.danger { background: var(--danger); border-color: var(--danger); color: #fff; }
+
+input, select {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
+/* 订单列表 */
+.order-list { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+.order-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 6px;
+  align-items: center;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 8px 4px;
+  text-align: left;
+  background: transparent;
+}
+.order-row.selected { background: #e6f4f6; border-radius: 6px; }
+.order-row .oid { font-weight: 600; }
+.order-row .amount { font-variant-numeric: tabular-nums; }
+
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.badge-open { background: #e3f2fd; color: #1565c0; }
+.badge-paid { background: #e6f4ea; color: var(--ok); }
+.badge-refunded { background: #f0f0f0; color: var(--muted); }
+.badge-made { background: #e6f4ea; color: var(--ok); }
+.badge-pending { background: #fff4e0; color: var(--warn); }
+
+.workspace { display: flex; flex-direction: column; gap: 16px; }
+.empty { background: var(--panel); border: 1px dashed var(--line); border-radius: 8px; padding: 60px; text-align: center; }
+.empty .hint { color: var(--muted); }
+
+/* 菜单 */
+.menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.drink { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+.drink-name { font-weight: 600; margin-bottom: 6px; }
+.sizes { display: flex; gap: 6px; flex-wrap: wrap; }
+.size { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+
+/* 订单面板 */
+.order-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 14px; }
+.order-head { display: flex; align-items: center; gap: 10px; }
+.order-head h2 { margin: 0; }
+
+table.items { width: 100%; border-collapse: collapse; }
+table.items th, table.items td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+table.items th { color: var(--muted); font-weight: 500; font-size: 12px; }
+td.zero { color: var(--muted); }
+
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.card { border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+.card .current { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.cup { font-weight: 600; }
+.cup.own { color: var(--ok); }
+.cup.store { color: var(--ink); }
+.container-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.verify-form { display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap; width: 100%; }
+.verify-form label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
+.verify-form input { width: 100px; }
+.warn-line { color: var(--warn); font-size: 12px; width: 100%; }
+
+.rejections { margin-top: 8px; }
+.rejection { color: var(--danger); font-size: 13px; padding: 3px 0; }
+.rejection .muted { color: var(--muted); }
+
+details { margin-top: 8px; }
+summary { cursor: pointer; color: var(--muted); font-size: 12px; }
+.line { font-size: 12px; padding: 2px 0; color: var(--ink); }
+.active-line { font-weight: 600; }
+
+/* 优惠券 */
+.coupon-input { display: flex; gap: 8px; margin-bottom: 8px; }
+.available { display: flex; flex-wrap: wrap; gap: 6px; }
+.coupon-chip { display: flex; gap: 6px; align-items: center; font-size: 12px; }
+.coupon-tag { background: #fff4e0; color: var(--warn); border-radius: 6px; padding: 4px 10px; font-weight: 600; }
+.applied { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+/* 价格 */
+.pricing { border-top: 2px solid var(--line); padding-top: 10px; display: flex; flex-direction: column; gap: 4px; max-width: 360px; margin-left: auto; width: 100%; }
+.pricing > div { display: flex; justify-content: space-between; }
+.pricing .discount { color: var(--ok); }
+.pricing .total { font-size: 20px; font-weight: 700; border-top: 1px dashed var(--line); padding-top: 6px; }
+
+.payment { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.refund-info { width: 100%; background: #fafafa; border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; }
+
+/* toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+.toast-info { background: #334155; }
+.toast-ok { background: var(--ok); }
+.toast-warn { background: var(--warn); }
+.toast-error { background: var(--danger); }
