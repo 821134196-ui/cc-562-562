@@ -13,3 +13,11 @@ build/
 轨迹/
 录屏/
 视频/
+
+# SQLite database files (local runtime)
+*.db
+*.db-wal
+*.db-shm
+
+# Frontend build output (generated into backend resources by `npm run build`)
+src/main/resources/META-INF/resources/
